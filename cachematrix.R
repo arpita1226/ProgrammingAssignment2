@@ -1,5 +1,6 @@
 ## First we make a special function to calculate
 ## inverse and then a cache function
+## which can get the value from the cache without having to compute it
 
 ##makeCacheMatrix is a function to compute and set inverse
 
@@ -20,6 +21,7 @@ m <- NULL
 }
 
 ##cacheSolve will first look for a cached value in the above list
+##otherwise will compute solve
 
 cacheSolve <- function(x, ...) {
         ## solve function will get inverse of x
