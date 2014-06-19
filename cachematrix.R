@@ -1,7 +1,7 @@
-## Creating a special vector to get and set the solve value 
-## for matrix inverse
+## First we make a special function to calculate
+## inverse and then a cache function
 
-## Write a short comment describing this function
+##makeCacheMatrix is a function to compute and set inverse
 
 makeCacheMatrix <- function(x = matrix()) {
 
@@ -19,8 +19,18 @@ m <- NULL
        getsolve = getsolve)
 }
 
-## Write a short comment describing this function
+##cacheSolve will first look for a cached value in the above list
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        ## solve function will get inverse of x
+        
+         m <- x$getsolve()
+  if(!is.null(m)) {
+    message("getting cached data")
+    return(m)
+  }
+  data <- x$get()
+  m <- solve(data, ...)
+  x$setsolve(m)
+  m
 }
